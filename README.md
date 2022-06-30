@@ -1,2 +1,3 @@
-# Basi-Object
-O progett mij e di fratm Carminiell
+# Progetto Object Oriented
+
+Marco Pastore & Carmine Mascia
