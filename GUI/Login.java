@@ -6,8 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.Controller;
+import ImplementazioneDAO.ImplementazioneInsegnanteDAO;
+import ImplementazioneDAO.ImplementazioneStudenteDAO;
+import Model.Insegnante;
+import Model.Studente;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import java.awt.Font;
@@ -24,11 +32,12 @@ public class Login extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Create the frame.
 	 */
-	public Login (JFrame framechiamante) {
+	public Login (JFrame framechiamante, Controller r) {
 		frame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 706, 437);
@@ -44,19 +53,24 @@ public class Login extends JFrame {
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(442, 138, 96, 20);
+		textField_1.setBounds(442, 109, 96, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(442, 200, 96, 20);
+		textField_2.setBounds(442, 140, 96, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(442, 257, 96, 20);
+		textField_3.setBounds(442, 171, 96, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(442, 202, 96, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
@@ -65,17 +79,17 @@ public class Login extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Cognome");
 		lblNewLabel_1.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(137, 140, 69, 20);
+		lblNewLabel_1.setBounds(137, 111, 69, 20);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Mail");
 		lblNewLabel_2.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(137, 202, 49, 20);
+		lblNewLabel_2.setBounds(137, 142, 49, 20);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Password");
 		lblNewLabel_3.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
-		lblNewLabel_3.setBounds(137, 259, 89, 21);
+		lblNewLabel_3.setBounds(137, 173, 89, 21);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Per accedere al sito devi registrarti!");
@@ -85,7 +99,7 @@ public class Login extends JFrame {
 		
 		JLabel lblNewLabel_5 = new JLabel("Cosa sei?");
 		lblNewLabel_5.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
-		lblNewLabel_5.setBounds(292, 292, 75, 20);
+		lblNewLabel_5.setBounds(297, 281, 75, 20);
 		contentPane.add(lblNewLabel_5);
 		
 		JButton btnNewButton = new JButton("INDIETRO");
@@ -117,6 +131,33 @@ public class Login extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if (rdbtnNewRadioButton_1.isSelected() & !rdbtnNewRadioButton.isSelected()) {
+					String nome = textField.getText();
+					String cognome = textField_1.getText();
+					String login = textField_2.getText();
+					String password = textField_3.getText();
+					Studente st = new Studente(nome, password, login, cognome);
+					
+					if(nome.isEmpty() | cognome.isEmpty() | login.isEmpty() | password.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Errore! devi riempire i campi indicati");
+					}else {
+						r.RegistrazioneS(st);
+					}
+				}else if(rdbtnNewRadioButton.isSelected() & !rdbtnNewRadioButton_1.isSelected()) {
+					String nome = textField.getText();
+					String cognome = textField_1.getText();
+					String login = textField_2.getText();
+					String password = textField_3.getText();
+					String corso = textField_4.getText();
+					Insegnante ins = new Insegnante(nome, password, login, cognome, corso);
+					
+					if(nome.isEmpty() | cognome.isEmpty() | login.isEmpty() | password.isEmpty() | corso.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Errore! devi riempire i campi indicati");
+					}else {
+						r.RegistrazioneI(ins);
+					}
+					//rec insegnante
+				}
 				frame.setVisible(false);
 				framechiamante.setVisible(true);
 				frame.dispose();
@@ -126,9 +167,18 @@ public class Login extends JFrame {
 		btnNewButton_1.setBounds(409, 366, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
+		JLabel lblNewLabel_6 = new JLabel("Corso");
+		lblNewLabel_6.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
+		lblNewLabel_6.setBounds(137, 206, 69, 17);
+		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("P.S. l'ultima casella \u00E8 da compilare solo se si \u00E8 un insegnante");
+		lblNewLabel_7.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 15));
+		lblNewLabel_7.setBounds(123, 234, 437, 24);
+		contentPane.add(lblNewLabel_7);
+		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(55, 27, 583, 362);
+		panel.setBounds(69, 27, 550, 362);
 		contentPane.add(panel);
 	}
 }

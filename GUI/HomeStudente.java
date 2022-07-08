@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.Controller;
+import Model.Studente;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -23,7 +27,7 @@ public class HomeStudente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public HomeStudente(JFrame framechiamante) {
+	public HomeStudente(JFrame framechiamante, Studente st, Controller r) {
 		frame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 714, 404);
@@ -33,7 +37,7 @@ public class HomeStudente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Ciao " + "..." + ", cosa vuoi fare?");
+		JLabel lblNewLabel = new JLabel("Ciao " + st.getNome() + ", cosa vuoi fare?");
 		lblNewLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
 		lblNewLabel.setBounds(253, 71, 213, 35);
 		contentPane.add(lblNewLabel);

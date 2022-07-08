@@ -43,9 +43,17 @@ public class SceltaTest extends JFrame {
 		btnNewButton_4.setBounds(283, 289, 89, 23);
 		contentPane.add(btnNewButton_4);
 		
-		JLabel lblNewLabel_1 = new JLabel("Decidere come far decidere i test agli studeti");
-		lblNewLabel_1.setBounds(213, 164, 223, 14);
+		JLabel lblNewLabel_1 = new JLabel("Decidere come far decidere i test agli studenti");
+		lblNewLabel_1.setBounds(213, 164, 245, 14);
 		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Un'altra tabella?");
+		lblNewLabel_2.setBounds(283, 199, 81, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("tabella con tutti i nomi e facciamo scrivere all'utente il nome del test");
+		lblNewLabel_3.setBounds(153, 235, 339, 14);
+		contentPane.add(lblNewLabel_3);
 	}
 
 }

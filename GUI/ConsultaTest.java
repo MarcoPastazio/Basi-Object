@@ -50,6 +50,9 @@ public class ConsultaTest extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Risultati:");
 		lblNewLabel_2.setBounds(340, 21, 49, 14);
 		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("potremmo fare una tabella?");
+		lblNewLabel_3.setBounds(320, 159, 143, 14);
+		contentPane.add(lblNewLabel_3);
 	}
-
 }

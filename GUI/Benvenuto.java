@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.Controller;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -23,7 +26,7 @@ public class Benvenuto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Benvenuto() {
+	public Benvenuto(Controller r) {
 		frame=this;
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +51,7 @@ public class Benvenuto extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JFrame frameDaChiamare = new Login(frame);
+				JFrame frameDaChiamare = new Login(frame, r);
 				frameDaChiamare.setVisible(true);
 				frame.setVisible(false);
 			}
@@ -61,7 +64,7 @@ public class Benvenuto extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JFrame frameDaChiamare = new Conferma(frame);
+				JFrame frameDaChiamare = new Conferma(frame, r);
 				frameDaChiamare.setVisible(true);
 				frame.setVisible(false);
 			}

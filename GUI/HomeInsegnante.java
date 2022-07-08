@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.Controller;
+import Model.Insegnante;
+import Model.Utente;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -22,7 +27,7 @@ public class HomeInsegnante extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public HomeInsegnante(JFrame framechiamante) {
+	public HomeInsegnante(JFrame framechiamante, Insegnante ins, Controller r) {
 		frame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 789, 411);
@@ -32,7 +37,7 @@ public class HomeInsegnante extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Buongiorno " + "..." + ", Cosa vuole fare?");
+		JLabel lblNewLabel = new JLabel("Buongiorno " + ins.getNome() + ", Cosa vuole fare?");
 		lblNewLabel.setFont(new Font("Yu Gothic Medium", Font.PLAIN, 16));
 		lblNewLabel.setBounds(256, 50, 239, 33);
 		contentPane.add(lblNewLabel);
@@ -41,7 +46,7 @@ public class HomeInsegnante extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JFrame frameDaChiamare = new CreaTest(frame);
+				JFrame frameDaChiamare = new CreaTest(frame, ins, r);
 				frameDaChiamare.setVisible(true);
 				frame.setVisible(false);
 			}
