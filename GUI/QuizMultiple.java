@@ -54,8 +54,10 @@ public class QuizMultiple extends JFrame {
 		String[] split = new String[26];
 		if(domanda.contains(":")) {
 			split=domanda.split(":");
+			split[0] = split[0]+":"; 
 		}else {
 			split=domanda.split("?");
+			split[0] = split[0]+"?"; 
 		}
 		String[] split1 = split[1].split("@");
 		
