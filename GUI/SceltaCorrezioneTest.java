@@ -4,10 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.Controller;
+import Model.Insegnante;
+
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
@@ -20,7 +26,7 @@ public class SceltaCorrezioneTest extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SceltaCorrezioneTest(JFrame framechiamante) {
+	public SceltaCorrezioneTest(JFrame framechiamante, Controller r, Insegnante ins) {
 		frame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 826, 408);
@@ -44,7 +50,19 @@ public class SceltaCorrezioneTest extends JFrame {
 		btnNewButton.setBounds(151, 292, 89, 23);
 		contentPane.add(btnNewButton);
 		
+		int conto = r.ConteggioDomande("Salernitana");
+		float[] voti = new float[conto];
+		
 		JButton btnNewButton_1 = new JButton("AVANTI");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//qui carmine mi deve portare il nometest e anche il login dello studente che l'ha fatto!
+				JFrame frameDaChiamare = new CorrezioneQuiz(frame, r, "Salernitana", "nicoromito@libero.it", 0, voti, ins);
+				frameDaChiamare.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
 		btnNewButton_1.setBounds(558, 292, 89, 23);
 		contentPane.add(btnNewButton_1);
 		

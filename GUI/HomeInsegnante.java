@@ -72,7 +72,7 @@ public class HomeInsegnante extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JFrame frameDaChiamare = new SceltaCorrezioneTest(frame);
+				JFrame frameDaChiamare = new SceltaCorrezioneTest(frame, r, ins);
 				frameDaChiamare.setVisible(true);
 				frame.setVisible(false);
 			}

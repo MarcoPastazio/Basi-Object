@@ -143,11 +143,5 @@ public class QuizMultiple extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		
-		//cosa mi manca: 
-		//1) fare la funzione di traduzione creando un array di lettere dell'alfabeto
-		//2) salvare tutti i dati nel db
-		//mi devo salvare il numero e poi con la hash-table lo traduco in carattere
-		
-		
 	}
 }

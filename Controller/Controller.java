@@ -16,6 +16,8 @@ public class Controller {
 	private ImplementazioneQuizARispostaMultiplaDAO qrm;
 	private ImplementazioneQuizAperteDAO qa;
 	private ImplementazioneQuizMultipleDAO qm;
+	private ImplementazioneRispostaApertaDAO ra;
+	private ImplementazioneSceltaDAO sc;
 	
 	
 	public Controller() {
@@ -26,6 +28,8 @@ public class Controller {
 		qrm = new ImplementazioneQuizARispostaMultiplaDAO();
 		qa = new ImplementazioneQuizAperteDAO();
 		qm = new ImplementazioneQuizMultipleDAO();
+		ra = new ImplementazioneRispostaApertaDAO();
+		sc = new ImplementazioneSceltaDAO();
 	}
 	
 	//le varie creazioni delle classi
@@ -153,6 +157,31 @@ public class Controller {
 	
 	public boolean Rispostamultipla(String nomest, ArrayList<String> domandemultiple, String[] multiple, int contomultiple) {
 		boolean ok = qm.Rispostamultipla(nomest, domandemultiple, multiple, contomultiple);
+		return ok;
+	}
+	
+	public ArrayList<Float>PunteggioMax(String nometest, int conto) {
+		ArrayList<Float> ris = qra.PunteggioMax(nometest, conto);
+		return ris;
+	}
+	
+	public ArrayList<Float>PunteggioMin(String nometest, int conto) {
+		ArrayList<Float> ris = qra.PunteggioMin(nometest, conto);
+		return ris;
+	}
+	
+	public String RicavoRisposta(String nometest, String nomestudente, int conto, int indice) {
+		String ris = ra.RicavoRisposta(nometest, nomestudente, conto, indice);
+		return ris;
+	}
+	
+	public boolean AggiornamentoRispostaAperta(ArrayList<String> DomandeTest, String nomestudente, int conto, float[] voti) {
+		boolean ok = ra.AggiornamentoRispostaAperta(DomandeTest, nomestudente, conto, voti);
+		return ok;
+	}
+	
+	public boolean AggiornamentoScelta(String nomestudente, float[] voti, int conto) {
+		boolean ok = sc.AggiornamentoScelta(nomestudente, voti, conto);
 		return ok;
 	}
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import Connessione.ConnessioneDatabase;
 import Model.Insegnante;
@@ -49,5 +50,45 @@ public class ImplementazioneQuizARispostaApertaDAO {
 			e.printStackTrace();
 		}
 		return conto;
+	}
+	
+	public ArrayList<Float>PunteggioMax(String nometest, int conto){
+		ArrayList<Float> punteggio = new ArrayList();
+		ArrayList<String> appoggio = new ArrayList();
+		int indice = 0;
+		try {
+			PreparedStatement query = this.connection.prepareStatement("Select punteggiomax From quizarispostaaperta Where test = '"+ nometest +"'");
+			ResultSet set = query.executeQuery();
+			while (set.next()) {
+				appoggio.add(set.getString("punteggiomax"));
+				Float num = Float.parseFloat(appoggio.get(indice));
+				punteggio.add(indice, num);
+				indice++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return punteggio;
+	}
+	
+	public ArrayList<Float>PunteggioMin(String nometest, int conto){
+		ArrayList<Float> punteggio = new ArrayList();
+		ArrayList<String> appoggio = new ArrayList();
+		int indice = 0;
+		try {
+			PreparedStatement query = this.connection.prepareStatement("Select punteggiomin From quizarispostaaperta Where test = '"+ nometest +"'");
+			ResultSet set = query.executeQuery();
+			while (set.next()) {
+				appoggio.add(set.getString("punteggiomin"));
+				Float num = Float.parseFloat(appoggio.get(indice));
+				punteggio.add(indice, num);
+				indice++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return punteggio;
 	}
 }
