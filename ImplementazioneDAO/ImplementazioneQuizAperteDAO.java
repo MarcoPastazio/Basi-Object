@@ -126,4 +126,19 @@ public class ImplementazioneQuizAperteDAO {
 		}
 		return esito;
 	}
+	
+	public ArrayList<String> RicavoNomeA(String nometest, int conto){
+		ArrayList<String> nome = new ArrayList();
+		try {
+			PreparedStatement query = this.conn.prepareStatement("Select nome From quizarispostaaperta Where test = '"+ nometest +"'");
+			ResultSet set = query.executeQuery();
+			while (set.next()) {
+				nome.add(set.getString("nome"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return nome;
+	}
 }

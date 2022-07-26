@@ -11,4 +11,5 @@ public interface QuizAperteDAO {
 	public int ConteggioDomande(String nometest);
 	public String NomeProf(String nometest);
 	public boolean Rispostaaperta(String nomest, String nomeins, ArrayList<String> domandeaperte, String[] aperte, int contoaperte);
+	public ArrayList<String> RicavoNomeA(String nometest, int conto);
 }

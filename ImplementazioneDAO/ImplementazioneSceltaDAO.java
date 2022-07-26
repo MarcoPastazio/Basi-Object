@@ -21,16 +21,16 @@ public class ImplementazioneSceltaDAO {
 		}
 	}
 	
-	public boolean AggiornamentoScelta(String nomestudente, float[] voti, int conto) {
+	public boolean AggiornamentoScelta(String nomestudente, String nometest, float[] voti, int conto) {
 		boolean esito= false;
 		float somma = 0;
-		for(int i = 0;i < voti.length-1;i++) {
+		for(int i = 0;i < voti.length;i++) {
 			somma += voti[i]; 
 		}
 		
 		try {
 			for(int i = 0; i < conto; i++) {
-				PreparedStatement query= this.conn.prepareStatement("UPDATE SCELTA SET VOTO = '"+somma+"' , CORRETTO = true WHERE studente = '"+nomestudente+"' AND termina = true ");
+				PreparedStatement query= this.conn.prepareStatement("UPDATE SCELTA SET VOTO = '"+somma+"' , CORRETTO = true WHERE studente = '"+nomestudente+"' AND termina = true AND test = '"+nometest+"' ");
 				esito=query.execute();
 			}
 			

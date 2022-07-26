@@ -41,7 +41,8 @@ public class ImplementazioneRispostaApertaDAO {
 		boolean esito= false;
 		try {
 			for(int i = 0; i < conto; i++) {
-				PreparedStatement query= this.conn.prepareStatement("UPDATE RISPOSTAAPERTA SET VOTO = '"+voti[i]+"' , CORRETTA = true WHERE studente = '"+nomestudente+"' AND quiz = '"+DomandeTest.get(i)+"' ");
+				System.out.println(DomandeTest.get(i));
+				PreparedStatement query= this.conn.prepareStatement("UPDATE RISPOSTAAPERTA SET VOTO = '"+voti[i]+"' , CORRETTA = true WHERE studente = '"+nomestudente+"' AND quiz = '"+DomandeTest.get(i)+"' AND CORRETTA = false ");
 				esito=query.execute();
 			}
 			

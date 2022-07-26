@@ -2,5 +2,5 @@ package DAO;
 
 public interface SceltaDAO {
 
-	public boolean AggiornamentoScelta(String nomestudente, float[] voti, int conto);
+	public boolean AggiornamentoScelta(String nomestudente, String nometest, float[] voti, int conto);
 }

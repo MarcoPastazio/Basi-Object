@@ -99,9 +99,9 @@ public class CorrezioneQuiz extends JFrame {
 								}else {
 									voto = Float.parseFloat(votos);
 									voti[indice] = voto;
-									ArrayList<String> DomandeTest = r.RicavoDomandaA(nometest, conto);
+									ArrayList<String> DomandeTest = r.RicavoNomeA(nometest, conto);
 									r.AggiornamentoRispostaAperta(DomandeTest, nomestudente, conto, voti);
-									r.AggiornamentoScelta(nomestudente, voti, conto);
+									r.AggiornamentoScelta(nomestudente, nometest, voti, conto);
 									JFrame frameDaChiamare = new HomeInsegnante(frame, ins, r);
 									frameDaChiamare.setVisible(true);
 									frame.setVisible(false);

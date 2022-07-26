@@ -104,6 +104,11 @@ public class Controller {
 		return ris;
 	}
 	
+	public ArrayList<String> RicavoNomeA(String nometest, int conto){
+		ArrayList<String> ris = qa.RicavoNomeA(nometest, conto);
+		return ris;
+	}
+	
 	
 	public String RicavoNome(String nometest, int conto, int indice){
 		String ris = qa.RicavoNome(nometest, conto, indice);
@@ -180,8 +185,8 @@ public class Controller {
 		return ok;
 	}
 	
-	public boolean AggiornamentoScelta(String nomestudente, float[] voti, int conto) {
-		boolean ok = sc.AggiornamentoScelta(nomestudente, voti, conto);
+	public boolean AggiornamentoScelta(String nomestudente, String nometest, float[] voti, int conto) {
+		boolean ok = sc.AggiornamentoScelta(nomestudente, nometest, voti, conto);
 		return ok;
 	}
 }
