@@ -28,7 +28,15 @@ public class CorrezioneQuiz extends JFrame {
 	private JTextField textField;
 	
 	/**
-	 * Create the frame.
+	 * Crea il frame in cui l'insegnante corregge i quiz a risposta aperta e mette un voto in base alla correttezza
+	 * della risposta.
+	 * @param framechiamante è il frame da cui viene chiamato
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+	 * @param nometest è il nome del test
+	 * @param nomestudente è il nome per il login dello studente che ha svolto il quiz
+	 * @param indice è il numero del quiz da correggere
+	 * @param voti è un array di float dove si salvano i voti
+	 * @param ins è l'insegnante che deve correggere il quiz  
 	 */
 	public CorrezioneQuiz(JFrame framechiamante, Controller r, String nometest, String nomestudente, int indice, float[] voti, Insegnante ins) {
 		frame = this;
@@ -64,7 +72,6 @@ public class CorrezioneQuiz extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton_2 = new JButton("AVANTI");
-		//la mia idea è la seguente, se indice è uguale a conto, allo me lo salvo tutto nel db, altrimenti vado avanti
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String votos =  textField.getText();

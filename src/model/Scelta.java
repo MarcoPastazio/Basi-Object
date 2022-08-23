@@ -11,6 +11,16 @@ public class Scelta {
 	private Studente studente;
 	private Test test;
 	
+	/**
+	 * serve a dichiarare e a settare gli attributi di scelta e a creare i costruttori
+	 * @param studente colui che sceglie il test
+	 * @param test quello scelto dallo studente
+	 * @param data quando viene fatto
+	 * @param termina se è terminato o meno
+	 * @param corretto se è stato corretto o meno
+	 * @param voto del test scelto
+	 */
+	
 	public Scelta(Studente studente , Test test ,Date data, boolean termina , boolean corretto , float voto) {
 		this.studente=studente;
 		this.test=test;

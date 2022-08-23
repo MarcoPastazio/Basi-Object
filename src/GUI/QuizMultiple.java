@@ -30,7 +30,16 @@ public class QuizMultiple extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Create the frame.
+	 * Crea il frame per lo svolgimento dei quiz a risposta multipla.
+	 * @param framechiamante è il frame da cui viene chiamato
+     * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+     * @param aperte sono le risposte aperte
+     * @param multiple sono le risposte multiple
+     * @param st lo studente che sta usando l'applicazione
+     * @param nometest il nome del test selezionato dallo studente
+     * @param contoaperte è il numero di domande a risposta aperta
+     * @param contomultiple è il numero di domande a risposta multipla
+     * @param indice a che numero di domanda siamo
 	 */
 	public QuizMultiple(JFrame framechiamante, Controller r, String[] aperte, String[] multiple, Studente st, String nometest, int contoaperte, int contomultiple, int indice) {
 		frame = this;
@@ -86,7 +95,6 @@ public class QuizMultiple extends JFrame {
 			demoList.addElement(split1[i]);
 		}
 		list.setModel(demoList);
-		//list.setBorder(BorderFactory.createDashedBorder(null));
 		
 		JButton btnNewButton = new JButton("INDIETRO");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -115,9 +123,7 @@ public class QuizMultiple extends JFrame {
 						JFrame frameDaChiamare = new QuizMultiple(frame, r, aperte, multiple, st, nometest, contoaperte, contomultiple, indice+1);
 						frameDaChiamare.setVisible(true);
 						frame.setVisible(false);
-					}
-					//non so se salvare tutto con CONSEGNA(non so come fare) oppure fare piano piano inserisco nel db e poi update se lo studente vuole fare na modifica
-					
+					}					
 				}catch(Exception e1) {
 					e1.printStackTrace();
 				}
@@ -130,9 +136,9 @@ public class QuizMultiple extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(aperte!=null) {
-					ArrayList<String> domandeaperte = r.RicavoDomandaA(nometest, contoaperte);//
-					String nomeprof = r.NomeProf(nometest);//
-					r.Rispostaaperta(st.getLogin(), nomeprof, domandeaperte, aperte, contoaperte);//
+					ArrayList<String> domandeaperte = r.RicavoDomandaA(nometest, contoaperte);
+					String nomeprof = r.NomeProf(nometest);
+					r.Rispostaaperta(st.getLogin(), nomeprof, domandeaperte, aperte, contoaperte);
 				}
 				ArrayList<String> domandemultiple = r.RicavoDomandeM(nometest, contomultiple);
 				r.Rispostamultipla(st.getLogin(), domandemultiple, multiple, contomultiple);

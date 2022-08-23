@@ -1,5 +1,9 @@
 package DAO;
 
+/**
+ * All’interno del package ci sono le classi con tutte le implementazioni delle interfacce DAO rispetto a quel database
+ */
+
 import java.sql.ResultSet;
 
 import model.Studente;

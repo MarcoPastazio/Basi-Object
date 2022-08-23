@@ -23,13 +23,13 @@ public class NumeroQuizMultipla extends JFrame {
 	private JTextField textField;
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
-
 
 	/**
-	 * Create the frame.
+	 * Crea il frame dove decidi il numero di domande.
+	 * @param frameChiamante è il frame da cui viene chiamato
+     * @param st lo studente che sta usando l'applicazione
+     * @param nometest è il nome del test creato dall'insegnante
+     * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public NumeroQuizMultipla(JFrame framechiamante, Insegnante ins, String nometest, Controller r) {
 		frame=this;

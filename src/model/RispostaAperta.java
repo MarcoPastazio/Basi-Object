@@ -8,6 +8,16 @@ public class RispostaAperta {
 		private QuizARispostaAperta quiz;
 		private Insegnante insegnante;
 		
+		/**
+		 * serve a dichiarare e a settare gli attributi di risposta aperta e a creare i costruttori
+		 * @param risposta la risposta che da lo studente
+		 * @param voto come viene valutata la risposta
+		 * @param corretto se è corretto o meno
+		 * @param studente colui che risponde
+		 * @param quiz quale domanda è
+		 * @param insegnante colui che la corregge
+		 */
+		
 		public RispostaAperta(String risposta, float voto, boolean corretto, Studente studente, QuizARispostaAperta quiz, Insegnante insegnante){
 			this.risposta=risposta;
 			this.voto=voto;

@@ -13,6 +13,9 @@ public class ImplementazioneRispostaApertaDAO {
 	private Connection conn;
 	
 	public ImplementazioneRispostaApertaDAO () {
+		/**
+		 * qui avviene la connessione al database
+		 */
 		try {
 			this.conn = ConnessioneDatabase.getInstance().getConnection();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -23,6 +26,14 @@ public class ImplementazioneRispostaApertaDAO {
 
 	
 	public String RicavoRisposta(String nometest, String nomestudente, int conto, int indice) {
+		/**
+		 * una query che serve a ricavare le risposte
+		 * @param nometest il nome del test
+		 * @param nomestudente il nome dello studente
+		 * @param conto 
+		 * @param indice indice della risposta che ci serve
+		 * @return risposta.get(indice) il la risposta di quella determinata
+		 */
 		ArrayList<String> risposta = new ArrayList();
 		try {
 			PreparedStatement query = this.conn.prepareStatement("Select risposta From rispostaaperta r, quizarispostaaperta q, studente s Where r.quiz = q.nome AND q.test = '"+ nometest +"' AND s.login = r.studente AND s.login = '"+ nomestudente +"' AND r.corretta = false");
@@ -38,6 +49,14 @@ public class ImplementazioneRispostaApertaDAO {
 	}
 	
 	public boolean AggiornamentoRispostaAperta(ArrayList<String> DomandeTest, String nomestudente, int conto, float[] voti) {
+		/**
+		 * Una query che serve ad aggiornare i voti delle domande a risposta aperta 
+		 * @param DomandeTest le varie domande di quel test
+		 * @param nomestudente il nome dello studente
+		 * @param conto il numero di domande 
+		 * @param voti
+		 * @return esito
+		 */
 		boolean esito= false;
 		try {
 			for(int i = 0; i < conto; i++) {

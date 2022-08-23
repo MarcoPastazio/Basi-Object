@@ -17,7 +17,10 @@ public class ImplementazioneTestDAO implements TestDAO {
 
 	private Connection connection;
 	
-	public ImplementazioneTestDAO () throws SQLException, ClassNotFoundException{		
+	public ImplementazioneTestDAO () throws SQLException, ClassNotFoundException{
+		/**
+		 * qui avviene la connessione al database
+		 */
 		try {
 			this.connection = ConnessioneDatabase.getInstance().getConnection();
 		}catch (SQLException e ) {
@@ -30,6 +33,10 @@ public class ImplementazioneTestDAO implements TestDAO {
 	
 	@Override
 	public boolean CheckTest(Test t) {
+		/**
+		 * quando lo studente seleziona il test, fa il chack per vedere se esiste o meno quel test
+		 * @param t il test selezionato dallo studente
+		 */
 		try {
 			PreparedStatement query=this.connection.prepareStatement("SELECT nome FROM public.test WHERE test='"+t.getNome()+"'");
 			ResultSet ris=query.executeQuery();
@@ -42,8 +49,13 @@ public class ImplementazioneTestDAO implements TestDAO {
 		return false;
 	}
 
-//dividere in prendi aperte e multiple.
+	//dividere in prendi aperte e multiple.
 	public ResultSet PrendiTestAperte(Test t) {
+		/**
+		 * prende tutti i quiz a risposta aperta di quel determinato test
+		 * @param t il test selezionato
+		 * @return null
+		 */
 		try {
 			PreparedStatement query=this.connection.prepareStatement("SELECT * FROM public.quizarispostaaperta WHERE test='"+t.getNome()+"'");
 			ResultSet ris=query.executeQuery();
@@ -56,6 +68,11 @@ public class ImplementazioneTestDAO implements TestDAO {
 	}
 	
 	public ResultSet PrendiTestMultiple(Test t) {
+		/**
+		 * prende tutti i quiz a risposta multipla di quel determinato test
+		 * @param t il test selezionato
+		 * @return null
+		 */
 		try {
 			PreparedStatement query=this.connection.prepareStatement("SELECT * FROM public.quizarispostamultipla WHERE test='"+t.getNome()+"'");
 			ResultSet ris=query.executeQuery();
@@ -69,6 +86,14 @@ public class ImplementazioneTestDAO implements TestDAO {
 
 	@Override
 	public boolean RegistrazioneTest(Insegnante ins, String nometest, int durata) {
+		
+		/**
+		 * inserisce il nuovo test creato dall'insegnante
+		 * @param ins l'insegnante che lo crea
+		 * @param nometest il nome del nuovo test
+		 * @param durata la durata del nuovo test
+		 * @return esito
+		 */
 		
 		boolean esito = false;
 		try {
@@ -84,6 +109,11 @@ public class ImplementazioneTestDAO implements TestDAO {
 
 
 	public void setInvalid(String test) throws SQLException {
+		
+		/**
+		 * cambia il flag valido da true a false
+		 * @param test il test che viene messo a non valido
+		 */
 			PreparedStatement query= this.connection.prepareStatement("UPDATE test SET valido=false WHERE nome='"+test+"'");
 			query.execute();
 		

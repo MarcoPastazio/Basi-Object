@@ -8,6 +8,16 @@ public class QuizARispostaAperta {
 		private String descrizione;
 		private String domanda;
 		
+		/**
+		 * serve a dichiarare e a settare gli attributi di quiz a risposta aperta e a creare i costruttori
+		 * @param lunghezzaMax la lunghezza massima della domanda
+		 * @param punteggioMax il punteggio massimo per una domanda a risposta aperta
+		 * @param punteggioMin il punteggio minimo per una domanda a risposta aperta
+		 * @param nome il nome del quiz a risposta aperta
+		 * @param descrizione le peculiarità che riserva la singola domanda
+		 * @param domanda qual è la domanda
+		 */
+		
 		public QuizARispostaAperta(int lunghezzaMax, float punteggioMax, float punteggioMin, String nome, String descrizione , String domanda) {
 			this.lunghezzaMax=lunghezzaMax;
 			this.punteggioMin=punteggioMin;

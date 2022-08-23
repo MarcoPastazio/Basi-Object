@@ -1,5 +1,10 @@
 package Controller;
 
+/**
+ * il controller è quella classe che serve a collegare le GUI con le DAO e il Model. In questo caso,
+ * per questo progetto ci metteremo solo una classe all'interno del package controller
+ */
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -28,9 +33,6 @@ import model.*;
 
 public class Controller {
 	
-	//private Studente s=new Studente("Daniele", "1927", "Ostico@gmail.com", "Castorina");
-	//private Insegnante ins=new Insegnante("Carmine","devofaasd","cmascia@libero.it","Mascia","Object Oriented");
-	
 	private ImplementazioneInsegnanteDAO in;
 	private ImplementazioneStudenteDAO s;
 	private ImplementazioneTestDAO t;
@@ -54,7 +56,6 @@ public class Controller {
 			ra = new ImplementazioneRispostaApertaDAO();
 			sc = new ImplementazioneSceltaDAO();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -75,7 +76,6 @@ public class Controller {
 		return ins;
 	}
 	
-	//
 	public boolean LoginB(Studente st) {
 		boolean ok = s.LoginB(st);
 		return ok;
@@ -221,17 +221,9 @@ public class Controller {
 	
 	
 	public DefaultTableModel buildTableModel(int query,Studente st,Insegnante ins) {
-		//creare un oggetto prova e passargli dal costruttore un Deafault Table Model
 		try {
-			/*ImplementazioneStudenteDAO is=new ImplementazioneStudenteDAO();
-			ImplementazioneInsegnanteDAO inse=new ImplementazioneInsegnanteDAO();*/
-			/*while(val.next()) {
-				System.out.println("\n"+val.getString("nome") + " "+val.getString("corso") + " "+ val.getInt("durata") +" "+ val.getDate("data") +" "+ val.getString("insegnante")+"\n");
-			}*/
-			
 			ResultSet val;
 			switch (query) { 
-			//aggiungere uno studente
 				case 1: val=s.LeggiTest(st); 
 				break; 
 				case 2: val=s.ConsultaVoti(st);
@@ -250,7 +242,6 @@ public class Controller {
 			
 			ResultSetMetaData metaData = val.getMetaData();
 
-		    // names of columns
 		    Vector<String> columnNames = new Vector<String>();
 		    int columnCount = metaData.getColumnCount();
 		    for (int column = 1; column <= columnCount; column++) {
@@ -259,7 +250,6 @@ public class Controller {
 		    
 		    
 		    	
-		    	// data of the table
 		    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 		    while (val.next()) {
 		        Vector<Object> vector = new Vector<Object>();
@@ -269,24 +259,13 @@ public class Controller {
 		        data.add(vector);
 		    }
 		    	
-		   /* int i=0;
-		    if(data.isEmpty())
-		    	System.out.println("mammtAPecr");*/
-		    
-		    //return new DefaultTableModel(data, columnNames);
-		    System.out.println("\nmammt\n\n\n*****************\n\n\n");
-		    //System.out.println(columnNames.firstElement());
-		    System.out.println("\n\n*********************\n\n\n");
-		    DefaultTableModel tmp =new DefaultTableModel(data,columnNames);
-		    System.out.println(tmp==null);
-		    System.out.println("\n\n\n"+tmp+"\n\n\n");
-		    return tmp;
-		    /*prova p=new prova(tmp);
 		   
-		    p.setVisible(true);*/
+		    
+		    DefaultTableModel tmp =new DefaultTableModel(data,columnNames);
+		    return tmp;
+		    
 		   
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -295,14 +274,12 @@ public class Controller {
 	
 	public void CheckAndStartTest(Test te) {
 		boolean check;
-		//ImplementazioneTestDAO imp=new ImplementazioneTestDAO();
 		check= t.CheckTest(te);
 		if(check) {
 			PrendiTest(te);
 		}
 		
 	}
-//fai
 	private void PrendiTest(Test te) {
 		
 		ResultSet ris=t.PrendiTestAperte(te);
@@ -335,7 +312,6 @@ public class Controller {
 		String descrizione;
 		String domanda;
 		char rispostaCorretta;
-		//ArrayList<RispostaMultipla> risposte;
 		QuizARispostaMultipla quiz;
 		try {
 			while(ris.next()) {

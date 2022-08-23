@@ -1,5 +1,6 @@
 package ImplementazioneDAO;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,9 @@ public class ImplementazioneQuizARispostaApertaDAO {
 	private Connection connection;
 	
 	public ImplementazioneQuizARispostaApertaDAO () {
+		/**
+		 * qui avviene la classica connessione al database
+		 */
 		try {
 			this.connection = ConnessioneDatabase.getInstance().getConnection();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -24,6 +28,18 @@ public class ImplementazioneQuizARispostaApertaDAO {
 	}
 	
 	public boolean SalvaQuizAperta(String nomedomanda, String descrizione, String domanda, int lunghezzamax, double punteggiomax, double punteggiomin, String nometest) {
+		
+		/**
+		 * è una query che serve a inserire i dati in quizarispostaaperta
+		 * @param nomedomanda il nome della domanda
+		 * @param descrizione la descrizione della domanda
+		 * @param domanda la domanda effettiva
+		 * @param lunghezzamax il numero massimo di caratteri disponibili per una risposta
+		 * @param punteggiomax il voto più alto per una risposta data da uno studente
+		 * @param punteggiomin il voto più basso per una risposta data da uno studente
+		 * @param nometest il nome del test
+		 * @return esito serve a verificare se viene fatta o meno l'operazione di inserimento nel database
+		 */
 		
 		boolean esito = false;
 		try {
@@ -38,6 +54,13 @@ public class ImplementazioneQuizARispostaApertaDAO {
 	}
 	
 	public int ControlloLunghezza(String nome) {
+		
+		/**
+		 * controlla la lunghezza massima della domanda
+		 * @param nome del quiz
+		 * @return conto ovvero la lunghezzamax
+		 */
+		
 		int conto = 0;
 		try {
 			PreparedStatement query = this.connection.prepareStatement("Select lunghezzamax From quizarispostaaperta Where nome = '"+ nome +"'");
@@ -53,6 +76,14 @@ public class ImplementazioneQuizARispostaApertaDAO {
 	}
 	
 	public ArrayList<Float>PunteggioMax(String nometest, int conto){
+		
+		/**
+		 * qui si ricava il punteggio massimo per tutti i quiz a risposta aperta di quel determinato test
+		 * @param nometest il nome del test
+		 * @param conto
+		 * @return punteggio
+		 */
+		
 		ArrayList<Float> punteggio = new ArrayList();
 		ArrayList<String> appoggio = new ArrayList();
 		int indice = 0;
@@ -73,6 +104,14 @@ public class ImplementazioneQuizARispostaApertaDAO {
 	}
 	
 	public ArrayList<Float>PunteggioMin(String nometest, int conto){
+		
+		/**
+		 * qui si ricava il punteggio minimo per tutti i quiz a risposta aperta di quel determinato test
+		 * @param nometest il nome del test
+		 * @param conto
+		 * @return punteggio
+		 */
+		
 		ArrayList<Float> punteggio = new ArrayList();
 		ArrayList<String> appoggio = new ArrayList();
 		int indice = 0;

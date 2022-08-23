@@ -6,6 +6,14 @@ public abstract class Utente {
 	private String login;
 	private String cognome;
 	
+	/**
+	 * serve a dichiarare e a settare gli attributi di utente e a creare i costruttori
+	 * @param nome dell'utente
+	 * @param password per accedere alla piattaforma
+	 * @param login la mail
+	 * @param cognome dell'utente
+	 */
+	
 	public Utente(String nome, String password, String login, String cognome) {
 		this.nome=nome;
 		this.cognome=cognome;

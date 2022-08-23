@@ -1,4 +1,3 @@
-//ok
 package GUI;
 
 import java.awt.BorderLayout;
@@ -38,8 +37,7 @@ import javax.swing.border.EmptyBorder;
 public class SvolgiTestScelto extends JFrame {
 
 	private JFrame frame;
-	private static final int N_ROWS = 2;//modificato
-    //private static String[] header = {"Nome", "Corso", "Pubblicazione", "Durata","Insegnante"};
+	private static final int N_ROWS = 2;
     private DefaultTableModel dtm ;
     private JTable table ;
     private JScrollPane scrollPane ;
@@ -49,39 +47,25 @@ public class SvolgiTestScelto extends JFrame {
     private JTextField textField;
 
 	/**
-	 * Launch the application.
+	 * serve a far svolgere il test scelto dallo studente
+	 * @param frameChiamante è il frame da cui viene chiamato
+     * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+     * @param s lo studente che sta usando l'applicazione
 	 */
     public SvolgiTestScelto(JFrame frameChiamante,Controller r, Studente s) {
     	this.frame=this;
     	setBounds(100, 100, 735, 560);
     	getContentPane().setLayout(new BorderLayout());
-    	//setDefaultCloseOperation(JPanel);
     	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	//System.out.print("\n\n\n\nMAMAMAMAMAMAMAAMAMAMAMA\n"+t+"\n\n\n\n");
 	
-    	//this.dtm=t;
-    	//System.out.print("\ncicciolina\n"+t+" mammt a percr\n "+t==null+"\n\n\n");
-	
+    	//la differenza è la riga di sotto
     	this.table=new JTable(r.buildTableModel(3,s,null));
-    	/*table.addAncestorListener(new AncestorListener() {
-		public void ancestorAdded(AncestorEvent event) {
-			table.setVisible(true);
-		}
-		public void ancestorMoved(AncestorEvent event) {}
-		public void ancestorRemoved(AncestorEvent event) {
-			table.setVisible(false);
-		}
-		});*/
-    	//System.out.print(table);
+    	
     	this.scrollPane=new JScrollPane(this.table);
     	this.vScroll=this.scrollPane.getVerticalScrollBar();
-    	//this.setLayout(new BorderLayout());
     	Dimension d = new Dimension(320, N_ROWS * table.getRowHeight());
     	table.setPreferredScrollableViewportSize(d);
-    	/*for (int i = 0; i < N_ROWS; i++) {
-    	System.out.println("\n\n\n\na soreta\n\n\n\n");
-        addRow();
-    	}*/
+    	
     	scrollPane.setVerticalScrollBarPolicy(
     			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     	vScroll.addAdjustmentListener(new AdjustmentListener() {
@@ -114,7 +98,7 @@ public class SvolgiTestScelto extends JFrame {
         		if(nAperte>0) {
         			 frameDaChiamare = new QuizAperte(frame, r, nAperte, nMultiple, s,new String[nAperte] , new String[nMultiple],0,textField.getText());
         		}else {
-        			 frameDaChiamare= new QuizMultiple(frame,r,null,new String[nMultiple],s,textField.getText(),0,nMultiple,0);/*JFrame framechiamante, Controller r, String[] aperte, String[] multiple, Studente st, String nometest, int contoaperte, int contomultiple, int indice)*/
+        			 frameDaChiamare= new QuizMultiple(frame,r,null,new String[nMultiple],s,textField.getText(),0,nMultiple,0);
         		}
         		frameDaChiamare.setVisible(true);
 				frame.setVisible(false);
@@ -147,15 +131,7 @@ public class SvolgiTestScelto extends JFrame {
     		}
     	});
     	mnNewMenu.add(btnNewButton_2);
-    /*JPanel panel = new JPanel();
-    panel.add(new JButton(new AbstractAction("Add Row") {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            addRow();//jooo
-        }
-    }));
-    this.add(panel, BorderLayout.SOUTH);*///baam
+   
 
 }
 }

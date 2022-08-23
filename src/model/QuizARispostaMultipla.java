@@ -9,7 +9,16 @@ public class QuizARispostaMultipla {
 	private String descrizione;
 	private String domanda;
 	private char rispostaCorretta;
-	//private ArrayList<RispostaMultipla> risposte;
+	
+	/**
+	 * serve a dichiarare e a settare gli attributi di quiz a risposta multipla e a creare i costruttori
+	 * @param votoRispostaCorretta il voto se la risposta è corretta
+	 * @param votoRispostaSbagliata il voto se la risposta è sbagliata
+	 * @param nome il nome della domanda a risposta multipla
+	 * @param descrizione le peculiarità che riserva la singola domanda
+	 * @param domanda la domanda in se
+	 * @param rispostaCorretta tra tutte le risposte, indica quale è la corretta
+	 */
 	
 	public QuizARispostaMultipla(float votoRispostaCorretta, float votoRispostaSbagliata, String nome, String descrizione, String domanda, char rispostaCorretta){
 		this.votoRispostaCorretta=votoRispostaCorretta;
@@ -18,7 +27,6 @@ public class QuizARispostaMultipla {
 		this.descrizione=descrizione;
 		this.domanda=domanda;
 		this.rispostaCorretta=rispostaCorretta;
-		//this.risposte=risposte;
 	}
 	
 	public float getVotoRispostaCorretta() {

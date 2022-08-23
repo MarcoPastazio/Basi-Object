@@ -29,7 +29,10 @@ public class HomeStudente extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * Create il frame dove ci sta la home del lato studente dove si può o svolgere un test o
+	 * scegliere un test per il futuro o consultare i punteggi dei vari test.
+	 * @param st è lo studente che ha avuto accesso all'applicazione
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public HomeStudente( Studente st, Controller r) {
 		frame = this;

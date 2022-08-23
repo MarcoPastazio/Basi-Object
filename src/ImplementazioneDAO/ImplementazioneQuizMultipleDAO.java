@@ -13,6 +13,9 @@ public class ImplementazioneQuizMultipleDAO {
 	private Connection conn;
 	
 	public ImplementazioneQuizMultipleDAO () {
+		/**
+		 * qui avviene la connessione al database
+		 */
 		try {
 			this.conn = ConnessioneDatabase.getInstance().getConnection();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -22,6 +25,11 @@ public class ImplementazioneQuizMultipleDAO {
 	}
 	
 	public int ConteggioDomandeM(String nometest) {
+		/**
+		 * serve a generare una query che ricava il numero di quiz a risposta multipla di quel determinato test
+		 * @param nometest il nome del test
+		 * @return conto il numero di domande
+		 */
 		int conto = 0;
 		try {
 			PreparedStatement query = this.conn.prepareStatement("Select count(domanda) From quizarispostamultipla Where test = '"+ nometest +"'");
@@ -37,6 +45,13 @@ public class ImplementazioneQuizMultipleDAO {
 	}
 	
 	public String RicavoDomandaM(String nometest, int conto, int indice) {
+		/**
+		 * Mi ricavo la singola domanda a risposta multipla del test che mi serve
+		 * @param nometest il nome del test
+		 * @param conto
+		 * @param indice il numero della domanda che mi serve 
+		 * @return domande.get(indice) ovvero la singola domanda a risposta multipla del test
+		 */
 		ArrayList<String> domande = new ArrayList();
 		try {
 			PreparedStatement query = this.conn.prepareStatement("Select domanda From quizarispostamultipla Where test = '"+ nometest +"'");
@@ -53,6 +68,12 @@ public class ImplementazioneQuizMultipleDAO {
 	
 	//lo usero sse faccio consegna
 	public ArrayList<String> RicavoDomandeM(String nometest, int conto) {
+		/**
+		 * serve a generare una query che ricava tutte le domande a risposta multipla di quel determinato test
+		 * @param nometest il nome del test
+		 * @param conto
+		 * @return domande le domande di quel determinato test
+		 */
 		ArrayList<String> domande = new ArrayList();
 		try {
 			PreparedStatement query = this.conn.prepareStatement("Select nome From quizarispostamultipla Where test = '"+ nometest +"'");
@@ -68,6 +89,15 @@ public class ImplementazioneQuizMultipleDAO {
 	}
 	
 	public String RicavoNomeM(String nometest, int conto, int indice) {
+		
+		/**
+		 * serve a generare una query che ricava tutti i nomi del quiz risposta multipla di quel determinato test
+		 * @param nometest il nome del test
+		 * @param conto
+		 * @param indice mi indica il numero della domanda
+		 * @return nome.get(indice) il nome della domanda con quel determinato indice
+		 */
+		
 		ArrayList<String> nome = new ArrayList();
 		try {
 			PreparedStatement query = this.conn.prepareStatement("Select nome From quizarispostamultipla Where test = '"+ nometest +"'");
@@ -83,6 +113,15 @@ public class ImplementazioneQuizMultipleDAO {
 	}
 	
 	public String RicavoDescrizioneM(String nometest, int conto, int indice) {
+		
+		/**
+		 * serve a generare una query che ricava tutte le descrizioni del quiz risposta multipla di quel determinato test
+		 * @param nometest il nome del test
+		 * @param conto
+		 * @param indice mi indica il numero della domanda
+		 * @return descrizione.get(indice) la descrizione della domanda con quel determinato indice
+		 */
+		
 		ArrayList<String> descrizione = new ArrayList();
 		try {
 			PreparedStatement query = this.conn.prepareStatement("Select descrizione From quizarispostamultipla Where test = '"+ nometest +"'");
@@ -98,6 +137,17 @@ public class ImplementazioneQuizMultipleDAO {
 	}
 	
 	public boolean Rispostamultipla(String nomest, ArrayList<String> domandemultiple, String[] multiple, int contomultiple) {
+		
+		/**
+		 * ci sta una query in cui si inserisce nel database i dati per la tabella rispostamultipla 
+		 * @param nomest il nome dello studente
+		 * @param nomeins il nome dell'insegnante
+		 * @param domandemultiple le domande aperte
+		 * @param multiple le risposte dello studente alle domande 
+		 * @param contomultiple
+		 * @return esito
+		 */
+		
 		boolean esito= false;
 		try {
 			for(int i = 0; i < contomultiple; i++) {
@@ -113,12 +163,19 @@ public class ImplementazioneQuizMultipleDAO {
 	}
 
 	public float RisultatoMultiple(String nomestudente, String nometest) {
+		
+		/**
+		 * fa la somma dei quiz a risposta multipla di quei determinati test
+		 * @param nomestudente il nome dello studente
+		 * @param nometest il nome del test
+		 * @return 0
+		 */
+		
 		try {
 			PreparedStatement query=this.conn.prepareStatement("select sum(voto) as somma from rispostamultipla where quiz IN (select nome from quizarispostamultipla where test='"+nometest+"')AND studente='"+nomestudente+"'");
 			ResultSet res=query.executeQuery();
 			if(res.next()) {
 				float ret= res.getFloat("somma") ;
-				System.out.print("\n\n\n"+ret+"\n\n\n");
 				return ret;
 			}
 		} catch (SQLException e) {

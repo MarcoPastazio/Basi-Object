@@ -11,6 +11,9 @@ public class ImplementazioneQuizARispostaMultiplaDAO {
 	private Connection connection;
 	
 	public ImplementazioneQuizARispostaMultiplaDAO () {
+		/**
+		 * qui avviene la connessione al database
+		 */
 		try {
 			this.connection = ConnessioneDatabase.getInstance().getConnection();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -20,6 +23,16 @@ public class ImplementazioneQuizARispostaMultiplaDAO {
 	}
 	
 	public boolean SalvaQuizMultipla(String nomedomanda, String descrizione, String domanda, float votorispostacorretta, float votorispostasbagliata, String nometest, String rispostacorretta){
+		
+		/**
+		 * @param nomedomanda il nome della domanda
+		 * @param descrizione la descrizione della domanda
+		 * @param domanda la domanda effettiva
+		 * @param votorispostacorretta il voto nel caso in cui la risposta del quiz a risposta multipla è corretta
+		 * @param votorispostasbagliata il voto nel caso in cui la risposta del quiz a risposta multipla è sbagliata
+		 * @param nometest il nome del test
+		 * @param rispostacorretta quale risposta è corretta
+		 */
 		
 		boolean esito = false;
 		try {

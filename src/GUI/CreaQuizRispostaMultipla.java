@@ -35,13 +35,18 @@ public class CreaQuizRispostaMultipla extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * Crea il frame in cui viene creato il singolo quiz a risposta multipla per un determinato test
+	 * e si possono aggiungere o altri quiz a risposta multipla o aperta.
+	 * @param framechiamante il frame da cui veniamo
+	 * @param ins è l'insegnante che sta creando il quiz
+	 * @param nometest è il nome del test che il prof ha dato
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+	 * @param numeroRisposte è il numero di quiz a risposta multipla
 	 */
 	public CreaQuizRispostaMultipla(JFrame framechiamante, Insegnante ins, String nometest, Controller r, int numeroRisposte) {
 		JTextField[] textField_2=new JTextField[numeroRisposte];
 		frame = this;
 		JPanel panel_1 = new JPanel();
-		//panel_1=r.setTextField(panel_1,textField_2);
 		for(int i=0;i<textField_2.length;i++) {
 			textField_2[i]=new JTextField();
 			textField_2[i].setBounds(524, 236, 96, 20);

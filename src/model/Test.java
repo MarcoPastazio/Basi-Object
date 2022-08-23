@@ -13,6 +13,17 @@ public class Test {
 	private ArrayList<QuizARispostaAperta> quizAperti;
 	private ArrayList<QuizARispostaMultipla> quizMultipla;
 	
+	/**
+	 * serve a dichiarare e a settare gli attributi di test e a creare i costruttori
+	 * @param nome del test
+	 * @param corso di che si tratta
+	 * @param durata quanto dura un test
+	 * @param data in cui è stato creato
+	 * @param insegnante che ha creato il test
+	 * @param quizAperti l'insieme dei quiz a risposta aperta
+	 * @param quizMultipla l'insieme dei quiz a risposta multipla
+	 */
+	
 	public Test(String nome) {
 		this.nome=nome;
 	}

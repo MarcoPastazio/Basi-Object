@@ -27,7 +27,16 @@ public class QuizAperte extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * Crea il frame per lo svolgimento dei quiz a risposta aperta.
+	 * @param framechiamante è il frame da cui viene chiamato
+     * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+     * @param contoaperte è il numero di domande a risposta aperta
+     * @param contomultiple è il numero di domande a risposta multipla
+     * @param st lo studente che sta usando l'applicazione
+     * @param aperte sono le risposte aperte
+     * @param multiple sono le risposte multiple
+     * @param indice a che numero di domanda siamo
+     * @param nometest il nome del test selezionato dallo studente
 	 */
 	public QuizAperte(JFrame framechiamante, Controller r, int contoaperte, int contomultiple, Studente st, String[] aperte, String[] multiple, int indice, String nometest) {
 		frame = this;
@@ -38,12 +47,10 @@ public class QuizAperte extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//carmine in scelta test si porterà in questo metodo il nome del test e lo metteremo sempre qua
 		JLabel lblNewLabel = new JLabel(nometest);
 		lblNewLabel.setBounds(329, 23, 102, 14);
 		contentPane.add(lblNewLabel);
 		
-		//li devo mettere singolarmente dentro i jlabel e sto na crema e amarena
 		String nome = r.RicavoNome(nometest, contoaperte, indice);
 		JLabel lblNewLabel_1 = new JLabel(nome);
 		lblNewLabel_1.setBounds(87, 68, 608, 14);
@@ -96,12 +103,6 @@ public class QuizAperte extends JFrame {
 						frameDaChiamare.setVisible(true);
 						frame.setVisible(false);
 					}
-					
-					
-					//non so se salvare tutto con FINE(non so come fare) oppure fare piano piano inserisco nel db e poi update se lo studente vuole fare na modifica
-					//mi serve per andare a salvare tutto in rispostaaperta
-					
-					//successivamente passo alle multiple e chiedere a francesco il fatto della jlist
 					
 				}catch(Exception e1) {
 					e1.printStackTrace();

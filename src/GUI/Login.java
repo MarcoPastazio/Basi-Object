@@ -35,7 +35,9 @@ public class Login extends JFrame {
 	private JTextField textField_4;
 
 	/**
-	 * Create the frame.
+	 * Create il frame che nel caso in cui non sei registrato, ti fa fare il login.
+	 * @param frameChiamante è il frame da cui viene chiamato
+     * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public Login (JFrame framechiamante, Controller r) {
 		frame = this;
