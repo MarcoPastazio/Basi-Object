@@ -1,4 +1,3 @@
-//ok
 package GUI;
 
 import java.awt.BorderLayout;
@@ -26,7 +25,8 @@ public class Benvenuto extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Create the frame.
+	 * Crea il frame benvenuto, dove viene posta la domanda se si è iscritti o meno alla piattaforma.
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public Benvenuto(Controller r) {
 		frame=this;
