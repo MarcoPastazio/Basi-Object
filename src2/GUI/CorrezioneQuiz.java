@@ -28,8 +28,17 @@ public class CorrezioneQuiz extends JFrame {
 	private JTextField textField;
 	
 	/**
-	 * Create the frame.
+	 * Crea il frame in cui l'insegnante corregge i quiz a risposta aperta e mette un voto in base alla correttezza
+	 * della risposta.
+	 * @param framechiamante è il frame da cui viene chiamato
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+	 * @param nometest è il nome del test
+	 * @param nomestudente è il nome per il login dello studente che ha svolto il quiz
+	 * @param indice è il numero del quiz da correggere
+	 * @param voti è un array di float dove si salvano i voti
+	 * @param ins è l'insegnante che deve correggere il quiz  
 	 */
+	
 	public CorrezioneQuiz(JFrame framechiamante, Controller r, String nometest, String nomestudente, int indice, float[] voti, Insegnante ins) {
 		frame = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +73,7 @@ public class CorrezioneQuiz extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton_2 = new JButton("AVANTI");
-		//la mia idea � la seguente, se indice � uguale a conto, allo me lo salvo tutto nel db, altrimenti vado avanti
+		//la mia idea è la seguente, se indice è uguale a conto, allo me lo salvo tutto nel db, altrimenti vado avanti
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String votos =  textField.getText();
@@ -77,7 +86,7 @@ public class CorrezioneQuiz extends JFrame {
 							}else {
 								voto = Float.parseFloat(votos);
 								if(voto > punteggiomax.get(indice) | voto < punteggiomin.get(indice)) {
-									JOptionPane.showMessageDialog(null, "Il voto � compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
+									JOptionPane.showMessageDialog(null, "Il voto è compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
 								}else {
 									voti[indice] = voto;
 									JFrame frameDaChiamare = new CorrezioneQuiz(framechiamante, r, nometest, nomestudente, indice+1, voti, ins);
@@ -96,7 +105,7 @@ public class CorrezioneQuiz extends JFrame {
 							}else {
 								voto = Float.parseFloat(votos);
 								if(voto > punteggiomax.get(indice) | voto < punteggiomin.get(indice)) {
-									JOptionPane.showMessageDialog(null, "Il voto � compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
+									JOptionPane.showMessageDialog(null, "Il voto è compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
 								}else {
 									voto = Float.parseFloat(votos);
 									voti[indice] = voto;
