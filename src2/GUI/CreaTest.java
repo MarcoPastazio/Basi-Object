@@ -32,7 +32,11 @@ public class CreaTest extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * Crea il frame in cui l'insegnante dichiara il nome del test, la durata e può aggiungere
+	 * quiz a risposta aperta o multipla.
+	 * @param framechiamante il frame da cui veniamo
+	 * @param ins è l'insegnante che sta creando il quiz
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public CreaTest(JFrame framechiamante, Insegnante ins, Controller r) {
 		frame = this;
