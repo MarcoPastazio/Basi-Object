@@ -3,9 +3,14 @@ package Connessione;
 import java.sql.*;
 
 public class ConnessioneDatabase {
+	
+	/**
+	 * ritorna la connessione al database.
+	 * @return connection 
+	 */
 		private static ConnessioneDatabase instance;
 		private Connection connection = null;
-		private String url="jdbc:postgresql://localhost:5432/mammt"; //jdbc:postgresql://host:port/database  //"jdbc:postgresql://localhost:5432/Progetto"
+		private String url="jdbc:postgresql://localhost:5432/mammt";
 		
 		public ConnessioneDatabase() throws SQLException, ClassNotFoundException{
 			try {
