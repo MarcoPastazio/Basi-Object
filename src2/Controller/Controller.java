@@ -41,13 +41,12 @@ public class Controller {
 	private ImplementazioneRispostaApertaDAO ra;
 	private ImplementazioneSceltaDAO sc;
 	
+	/**
+	* il controller è quella classe che serve a collegare le GUI con le DAO e il Model. In questo caso,
+ 	* per questo progetto ci metteremo solo una classe all'interno del package controller
+ 	*/
 	
 	public Controller() {
-		
-		/**
- 		* il controller è quella classe che serve a collegare le GUI con le DAO e il Model. In questo caso,
- 		* per questo progetto ci metteremo solo una classe all'interno del package controller
- 		*/
 		
 		try {
 			in = new ImplementazioneInsegnanteDAO();
