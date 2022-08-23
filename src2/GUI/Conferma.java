@@ -1,4 +1,3 @@
-//ok
 package GUI;
 
 import java.awt.Color;
@@ -28,7 +27,7 @@ public class Conferma extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * Crea il frame in cui si deve fare la convalida della mail e della password dell'utente.
 	 */
 	public Conferma (Controller r) {
 		frame = this;
