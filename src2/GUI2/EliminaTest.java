@@ -23,11 +23,10 @@ import javax.swing.table.DefaultTableModel;
 
 import Controller.Controller;
 import model.Insegnante;
-import java.awt.FlowLayout;
 import java.awt.SystemColor;
 
-public class VediTestAperteCorrezione extends JFrame {
 
+public class EliminaTest extends JFrame {
 
 	private static final int N_ROWS = 2;//modificato
     //private static String[] header = {"Nome", "Corso", "Pubblicazione", "Durata","Insegnante"};
@@ -39,14 +38,11 @@ public class VediTestAperteCorrezione extends JFrame {
     private boolean isAutoScroll;
     private JTextField textField;
     private JFrame frame;
-    private JTextField textField_1;
 
 
-	/**
-	 * Create the frame.
-	 */
-	public VediTestAperteCorrezione(JFrame framechiamante, Insegnante ins , Controller r) {
-		frame=this;
+    
+	public EliminaTest(JFrame frameChiamante,Controller r,Insegnante ins) {
+		this.frame=this;
 		setBounds(100, 100, 735, 560);
 		getContentPane().setLayout(new BorderLayout());
     	//setDefaultCloseOperation(JPanel);
@@ -56,7 +52,7 @@ public class VediTestAperteCorrezione extends JFrame {
     	//this.dtm=t;
     	//System.out.print("\ncicciolina\n"+t+" mammt a percr\n "+t==null+"\n\n\n");
     	
-    	this.table=new JTable(r.buildTableModel(5,null,ins));
+    	this.table=new JTable(r.buildTableModel(6,null,ins));
     	/*table.addAncestorListener(new AncestorListener() {
     		public void ancestorAdded(AncestorEvent event) {
     			table.setVisible(true);
@@ -90,38 +86,21 @@ public class VediTestAperteCorrezione extends JFrame {
         JPanel panel = new JPanel();
         panel.setBackground(SystemColor.activeCaption);
         getContentPane().add(panel, BorderLayout.SOUTH);
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
-        JLabel lblNewLabel = new JLabel("Scrivi il nome del test da correggere");
+        JLabel lblNewLabel = new JLabel("Scrivi il nome del test scelto");
         panel.add(lblNewLabel);
         
         textField = new JTextField();
         panel.add(textField);
         textField.setColumns(10);
         
-        JButton btnNewButton = new JButton("START");
+        JButton btnNewButton = new JButton("SALVA");
         btnNewButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		String test=textField.getText();
-        		float voti[]=new float[r.ConteggioDomande(test)];
-        		String studente= textField_1.getText();
-        		if(test!=null && studente!= null && r.CheckTestStudente(test,studente)) {
-        			JFrame frameDaChiamare= new CorrezioneQuiz(frame,r,test,studente,0,voti,ins );//JFrame framechiamante, Controller r, String nometest, String nomestudente, int indice, float[] voti, Insegnante ins
-        			frameDaChiamare.setVisible(true);
-        			frame.setVisible(false);
-        			frame.dispose();
-        		}
-        		
+        		r.EliminaTestScelto(textField.getText());
         	}
         });
-        
-        JLabel lblNewLabel_1 = new JLabel("Scrivi il login dello studente");
-        panel.add(lblNewLabel_1);
-        
-        textField_1 = new JTextField();
-        panel.add(textField_1);
-        textField_1.setColumns(10);
         panel.add(btnNewButton);
         
         JMenuBar menuBar = new JMenuBar();
@@ -135,9 +114,9 @@ public class VediTestAperteCorrezione extends JFrame {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		framechiamante.setVisible(true);
         		frame.setVisible(false);
-        		frame.dispose();
+				frameChiamante.setVisible(true);
+				frame.dispose();
         	}
         });
         mnNewMenu.add(btnNewButton_1);
@@ -160,5 +139,6 @@ public class VediTestAperteCorrezione extends JFrame {
         }));
         this.add(panel, BorderLayout.SOUTH);*///baam
     }
-
 }
+
+

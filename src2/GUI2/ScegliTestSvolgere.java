@@ -1,33 +1,39 @@
+//è scelta test
 package GUI;
-
+//ok
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 import Controller.Controller;
-import model.Insegnante;
-import java.awt.FlowLayout;
+import model.Studente;
+
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
+//import model.Studente;
 
-public class VediTestAperteCorrezione extends JFrame {
-
+public class ScegliTestSvolgere extends JFrame {
+	
 
 	private static final int N_ROWS = 2;//modificato
     //private static String[] header = {"Nome", "Corso", "Pubblicazione", "Durata","Insegnante"};
@@ -36,19 +42,14 @@ public class VediTestAperteCorrezione extends JFrame {
     private JScrollPane scrollPane ;
     private JScrollBar vScroll ;
     private int row;
+    private JFrame frame;
     private boolean isAutoScroll;
     private JTextField textField;
-    private JFrame frame;
-    private JTextField textField_1;
 
-
-	/**
-	 * Create the frame.
-	 */
-	public VediTestAperteCorrezione(JFrame framechiamante, Insegnante ins , Controller r) {
-		frame=this;
-		setBounds(100, 100, 735, 560);
-		getContentPane().setLayout(new BorderLayout());
+    public ScegliTestSvolgere(JFrame frameChiamante, Studente st, Controller r) {
+    	this.frame=this;
+    	setBounds(100, 100, 908, 682);
+    	getContentPane().setLayout(new BorderLayout());
     	//setDefaultCloseOperation(JPanel);
     	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	//System.out.print("\n\n\n\nMAMAMAMAMAMAMAAMAMAMAMA\n"+t+"\n\n\n\n");
@@ -56,7 +57,8 @@ public class VediTestAperteCorrezione extends JFrame {
     	//this.dtm=t;
     	//System.out.print("\ncicciolina\n"+t+" mammt a percr\n "+t==null+"\n\n\n");
     	
-    	this.table=new JTable(r.buildTableModel(5,null,ins));
+    	this.table=new JTable(r.buildTableModel(1,st,null));
+    	
     	/*table.addAncestorListener(new AncestorListener() {
     		public void ancestorAdded(AncestorEvent event) {
     			table.setVisible(true);
@@ -90,9 +92,8 @@ public class VediTestAperteCorrezione extends JFrame {
         JPanel panel = new JPanel();
         panel.setBackground(SystemColor.activeCaption);
         getContentPane().add(panel, BorderLayout.SOUTH);
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
-        JLabel lblNewLabel = new JLabel("Scrivi il nome del test da correggere");
+        JLabel lblNewLabel = new JLabel("Scrivi il nome del test che vuoi svolgere");
         panel.add(lblNewLabel);
         
         textField = new JTextField();
@@ -103,25 +104,20 @@ public class VediTestAperteCorrezione extends JFrame {
         btnNewButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		String test=textField.getText();
-        		float voti[]=new float[r.ConteggioDomande(test)];
-        		String studente= textField_1.getText();
-        		if(test!=null && studente!= null && r.CheckTestStudente(test,studente)) {
-        			JFrame frameDaChiamare= new CorrezioneQuiz(frame,r,test,studente,0,voti,ins );//JFrame framechiamante, Controller r, String nometest, String nomestudente, int indice, float[] voti, Insegnante ins
-        			frameDaChiamare.setVisible(true);
-        			frame.setVisible(false);
-        			frame.dispose();
+        		String nomeTest=textField.getText();
+        		int nAperte=r.ConteggioDomande(nomeTest);
+        		int nMultiple=r.ConteggioDomandeM(nomeTest);
+        		JFrame frameDaChiamare;
+        		if(nAperte>0) {
+        			 frameDaChiamare = new QuizAperte(frame, r, nAperte, nMultiple, st ,new String[nAperte] , new String[nMultiple],0,textField.getText());
+        		}else {
+        			 frameDaChiamare= new QuizMultiple(frame,r,null,new String[nMultiple],st,textField.getText(),0,nMultiple,0);/*JFrame framechiamante, Controller r, String[] aperte, String[] multiple, Studente st, String nometest, int contoaperte, int contomultiple, int indice)*/
         		}
-        		
+        		frameDaChiamare.setVisible(true);
+				frame.setVisible(false);
+        		//devo passare tutte le informazioni richieste sul test
         	}
         });
-        
-        JLabel lblNewLabel_1 = new JLabel("Scrivi il login dello studente");
-        panel.add(lblNewLabel_1);
-        
-        textField_1 = new JTextField();
-        panel.add(textField_1);
-        textField_1.setColumns(10);
         panel.add(btnNewButton);
         
         JMenuBar menuBar = new JMenuBar();
@@ -135,9 +131,10 @@ public class VediTestAperteCorrezione extends JFrame {
         btnNewButton_1.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		framechiamante.setVisible(true);
         		frame.setVisible(false);
-        		frame.dispose();
+				frameChiamante.setVisible(true);
+				frame.dispose();
+        		
         	}
         });
         mnNewMenu.add(btnNewButton_1);
@@ -160,5 +157,20 @@ public class VediTestAperteCorrezione extends JFrame {
         }));
         this.add(panel, BorderLayout.SOUTH);*///baam
     }
-
 }
+
+    /*private void addRow() {//baam
+        char c = (char) ('A' + row++ % 26);
+        System.out.println("\n\ncess e mammt\n"+dtm+"\n\n");
+        dtm.addRow(new Object[]{
+                Character.valueOf(c),
+                String.valueOf(c) + String.valueOf(row),
+                Integer.valueOf(row),
+                Boolean.valueOf(row % 2 == 0)
+            });
+    }*/
+
+   
+
+
+
