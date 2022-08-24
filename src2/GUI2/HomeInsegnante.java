@@ -28,12 +28,10 @@ public class HomeInsegnante extends JFrame {
 	private JPanel contentPane;
 	private JFrame frame;
 	/**
-	 * Launch the application.
-	 */
-
-
-	/**
-	 * Create the frame.
+	 * Create il frame dove ci sta la home del lato insegnante dove si può o creare un test o
+	 * correggere un test o eliminare un test.
+	 * @param ins è l'insegnante che sta creando il quiz
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public HomeInsegnante(Insegnante ins, Controller r) {
 		frame=this;
