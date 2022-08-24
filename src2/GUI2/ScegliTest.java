@@ -1,4 +1,3 @@
-//ok
 package GUI;
 
 import java.awt.BorderLayout;
@@ -28,8 +27,7 @@ import java.awt.SystemColor;
 
 public class ScegliTest extends JFrame {
 
-	private static final int N_ROWS = 2;//modificato
-    //private static String[] header = {"Nome", "Corso", "Pubblicazione", "Durata","Insegnante"};
+	private static final int N_ROWS = 2;
     private DefaultTableModel dtm ;
     private JTable table ;
     private JScrollPane scrollPane ;
@@ -39,39 +37,25 @@ public class ScegliTest extends JFrame {
     private JTextField textField;
     private JFrame frame;
 	/**
-	 * Create the frame.
+	 * Crea il frame per far selezionare allo studente il test che vuole mettere nella "lista di attesa".
+	 * @param frameChiamante è il frame da cui viene chiamato
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+	 * @param s lo studente che sta usando l'applicazione
 	 */
 	public ScegliTest(JFrame frameChiamante,Controller r,Studente s) {
 		this.frame=this;
 		setBounds(100, 100, 735, 560);
 		getContentPane().setLayout(new BorderLayout());
-    	//setDefaultCloseOperation(JPanel);
     	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	//System.out.print("\n\n\n\nMAMAMAMAMAMAMAAMAMAMAMA\n"+t+"\n\n\n\n");
     	
-    	//this.dtm=t;
-    	//System.out.print("\ncicciolina\n"+t+" mammt a percr\n "+t==null+"\n\n\n");
     	
     	this.table=new JTable(r.buildTableModel(4,s,null));
-    	/*table.addAncestorListener(new AncestorListener() {
-    		public void ancestorAdded(AncestorEvent event) {
-    			table.setVisible(true);
-    		}
-    		public void ancestorMoved(AncestorEvent event) {}
-    		public void ancestorRemoved(AncestorEvent event) {
-    			table.setVisible(false);
-    		}
-    	});*/
-    	//System.out.print(table);
+    	
     	this.scrollPane=new JScrollPane(this.table);
     	this.vScroll=this.scrollPane.getVerticalScrollBar();
-        //this.setLayout(new BorderLayout());
         Dimension d = new Dimension(320, N_ROWS * table.getRowHeight());
         table.setPreferredScrollableViewportSize(d);
-        /*for (int i = 0; i < N_ROWS; i++) {
-        	System.out.println("\n\n\n\na soreta\n\n\n\n");
-            addRow();
-        }*/
+        
         scrollPane.setVerticalScrollBarPolicy(
             JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         vScroll.addAdjustmentListener(new AdjustmentListener() {
@@ -129,15 +113,7 @@ public class ScegliTest extends JFrame {
         	}
         });
         mnNewMenu.add(btnNewButton_2);
-        /*JPanel panel = new JPanel();
-        panel.add(new JButton(new AbstractAction("Add Row") {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addRow();//jooo
-            }
-        }));
-        this.add(panel, BorderLayout.SOUTH);*///baam
+        
     }
 }
 
