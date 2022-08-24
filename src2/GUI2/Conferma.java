@@ -38,8 +38,10 @@ public class Conferma extends JFrame {
 	private JTextField textField_1;
 
 	/**
-	 * Create the frame.
+	 * Crea il frame in cui si deve fare la convalida della mail e della password dell'utente.
+	 * @param r serve a far comunicare il model con la gui e con implementazioneDAO
 	 */
+	
 	public Conferma(Controller r) {
 		frame=this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
