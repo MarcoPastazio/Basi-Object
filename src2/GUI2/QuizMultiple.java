@@ -32,6 +32,19 @@ public class QuizMultiple extends JFrame {
 
 	private JPanel contentPane;
 	public JFrame frame;
+	
+	/**
+	 * Crea il frame per lo svolgimento dei quiz a risposta multipla.
+	 * @param framechiamante è il frame da cui viene chiamato
+         * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+     	 * @param aperte sono le risposte aperte
+     	 * @param multiple sono le risposte multiple
+     	 * @param st lo studente che sta usando l'applicazione
+     	 * @param nometest il nome del test selezionato dallo studente
+     	 * @param contoaperte è il numero di domande a risposta aperta
+     	 * @param contomultiple è il numero di domande a risposta multipla
+     	 * @param indice a che numero di domanda siamo
+	 */
 
 	public QuizMultiple(JFrame framechiamante, Controller r, String[] aperte, String[] multiple, Studente st, String nometest, int contoaperte, int contomultiple, int indice) {
 		frame=this;
