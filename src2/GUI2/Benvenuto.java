@@ -45,7 +45,8 @@ public class Benvenuto extends JFrame {
 	private JFrame frame;
 
 	/**
-	 * Create the frame.
+	 * ritorna la connessione al database.
+	 * @return connection 
 	 */
 	public Benvenuto(Controller r) {
 		frame=this;
@@ -83,11 +84,7 @@ public class Benvenuto extends JFrame {
 		
 		Panel panel_2 = new Panel();
 		panel_2.setBackground(SystemColor.window);
-		/*panel_2.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent evt) {
-				panel_2.setPreferredSize(getPreferredSize());
-			}
-		});*/
+		
 		panel_1.add(panel_2, BorderLayout.CENTER);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 180, 150));
 		
