@@ -32,23 +32,16 @@ public class QuizAperte extends JFrame {
 	private JFrame frame;
 
 	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					QuizAperta frame = new QuizAperta();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the frame.
+	 * Crea il frame per lo svolgimento dei quiz a risposta aperta.
+	 * @param framechiamante è il frame da cui viene chiamato
+         * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+         * @param contoaperte è il numero di domande a risposta aperta
+         * @param contomultiple è il numero di domande a risposta multipla
+         * @param st lo studente che sta usando l'applicazione
+         * @param aperte sono le risposte aperte
+         * @param multiple sono le risposte multiple
+         * @param indice a che numero di domanda siamo
+         * @param nometest il nome del test selezionato dallo studente
 	 */
 	public QuizAperte(JFrame framechiamante, Controller r, int contoaperte, int contomultiple, Studente st, String[] aperte, String[] multiple, int indice, String nometest) {
 		frame=this;
@@ -176,10 +169,6 @@ public class QuizAperte extends JFrame {
 					}
 					
 					
-					//non so se salvare tutto con FINE(non so come fare) oppure fare piano piano inserisco nel db e poi update se lo studente vuole fare na modifica
-					//mi serve per andare a salvare tutto in rispostaaperta
-					
-					//successivamente passo alle multiple e chiedere a francesco il fatto della jlist
 					
 				}catch(Exception e1) {
 					e1.printStackTrace();
