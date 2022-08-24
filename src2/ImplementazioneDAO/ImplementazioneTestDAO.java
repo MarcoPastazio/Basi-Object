@@ -119,6 +119,48 @@ public class ImplementazioneTestDAO implements TestDAO {
 		
 		
 	}
+	
+	
+	public boolean CheckEmptyTest(String nometest) {
+		
+		/**
+		 * verifica se il test è consistente o meno
+		 * @param nometest il test da controllare
+		 */
+		try {
+			PreparedStatement query=this.connection.prepareStatement("SELECT COUNT(*) FROM QUIZARISPOSTAAPERTA WHERE TEST='"+nometest+"'");
+			PreparedStatement query2=this.connection.prepareStatement("SELECT COUNT(*) FROM QUIZARISPOSTAMULTIPLA WHERE TEST='"+nometest+"'");
+			ResultSet res=query.executeQuery();
+			ResultSet res1=query2.executeQuery();
+			if(res.getInt(1)+res1.getInt(1) > 0)
+				return false;
+			else
+				return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	public void EliminaTest(String nometest) {
+		
+		/**
+		 * serve a eliminare un test se il professore lo vuole
+		 * @param nometest il test da eliminare
+		 */
+		try {
+			PreparedStatement query=this.connection.prepareStatement("DELETE FROM TEST WHERE NOME='"+nometest+"'");
+			query.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// TODO Auto-generated method stub
+		
+	}
 
 
 
