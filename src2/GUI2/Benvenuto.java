@@ -45,8 +45,8 @@ public class Benvenuto extends JFrame {
 	private JFrame frame;
 
 	/**
-	 * ritorna la connessione al database.
-	 * @return connection 
+	 * Crea il frame benvenuto, dove viene posta la domanda se si è iscritti o meno alla piattaforma.
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
 	 */
 	public Benvenuto(Controller r) {
 		frame=this;
