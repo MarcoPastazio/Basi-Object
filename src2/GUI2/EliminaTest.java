@@ -28,8 +28,7 @@ import java.awt.SystemColor;
 
 public class EliminaTest extends JFrame {
 
-	private static final int N_ROWS = 2;//modificato
-    //private static String[] header = {"Nome", "Corso", "Pubblicazione", "Durata","Insegnante"};
+	private static final int N_ROWS = 2;
     private DefaultTableModel dtm ;
     private JTable table ;
     private JScrollPane scrollPane ;
@@ -38,6 +37,13 @@ public class EliminaTest extends JFrame {
     private boolean isAutoScroll;
     private JTextField textField;
     private JFrame frame;
+	
+	/**
+     	* In questo frame l'insegnante scrive il nome del test da eliminare e lo elimina.  
+     	* @param framechiamante il frame da cui veniamo
+	* @param ins è l'insegnante che sta creando il quiz
+	* @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+     	*/
 
 
     
@@ -45,33 +51,17 @@ public class EliminaTest extends JFrame {
 		this.frame=this;
 		setBounds(100, 100, 735, 560);
 		getContentPane().setLayout(new BorderLayout());
-    	//setDefaultCloseOperation(JPanel);
-    	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	//System.out.print("\n\n\n\nMAMAMAMAMAMAMAAMAMAMAMA\n"+t+"\n\n\n\n");
+    		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
-    	//this.dtm=t;
-    	//System.out.print("\ncicciolina\n"+t+" mammt a percr\n "+t==null+"\n\n\n");
     	
-    	this.table=new JTable(r.buildTableModel(6,null,ins));
-    	/*table.addAncestorListener(new AncestorListener() {
-    		public void ancestorAdded(AncestorEvent event) {
-    			table.setVisible(true);
-    		}
-    		public void ancestorMoved(AncestorEvent event) {}
-    		public void ancestorRemoved(AncestorEvent event) {
-    			table.setVisible(false);
-    		}
-    	});*/
-    	//System.out.print(table);
+    	
+    		this.table=new JTable(r.buildTableModel(6,null,ins));
+    	
     	this.scrollPane=new JScrollPane(this.table);
     	this.vScroll=this.scrollPane.getVerticalScrollBar();
-        //this.setLayout(new BorderLayout());
         Dimension d = new Dimension(320, N_ROWS * table.getRowHeight());
         table.setPreferredScrollableViewportSize(d);
-        /*for (int i = 0; i < N_ROWS; i++) {
-        	System.out.println("\n\n\n\na soreta\n\n\n\n");
-            addRow();
-        }*/
+        
         scrollPane.setVerticalScrollBarPolicy(
             JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         vScroll.addAdjustmentListener(new AdjustmentListener() {
@@ -129,15 +119,7 @@ public class EliminaTest extends JFrame {
         	}
         });
         mnNewMenu.add(btnNewButton_2);
-        /*JPanel panel = new JPanel();
-        panel.add(new JButton(new AbstractAction("Add Row") {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addRow();//jooo
-            }
-        }));
-        this.add(panel, BorderLayout.SOUTH);*///baam
+       
     }
 }
 
