@@ -31,6 +31,19 @@ public class CorrezioneQuiz extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JFrame frame;
+	
+	
+	/**
+	 * Crea il frame in cui l'insegnante corregge i quiz a risposta aperta e mette un voto in base alla correttezza
+	 * della risposta.
+	 * @param framechiamante è il frame da cui viene chiamato
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+	 * @param nometest è il nome del test
+	 * @param nomestudente è il nome per il login dello studente che ha svolto il quiz
+	 * @param indice è il numero del quiz da correggere
+	 * @param voti è un array di float dove si salvano i voti
+	 * @param ins è l'insegnante che deve correggere il quiz  
+	 */
 
 	
 	
@@ -162,7 +175,7 @@ public class CorrezioneQuiz extends JFrame {
 							}else {
 								voto = Float.parseFloat(votos);
 								if(voto > punteggiomax.get(indice) | voto < punteggiomin.get(indice)) {
-									JOptionPane.showMessageDialog(null, "Il voto � compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
+									JOptionPane.showMessageDialog(null, "Il voto è compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
 								}else {
 									voti[indice] = voto;
 									JFrame frameDaChiamare = new CorrezioneQuiz(framechiamante, r, nometest, nomestudente, indice+1, voti, ins);
@@ -181,7 +194,7 @@ public class CorrezioneQuiz extends JFrame {
 							}else {
 								voto = Float.parseFloat(votos);
 								if(voto > punteggiomax.get(indice) | voto < punteggiomin.get(indice)) {
-									JOptionPane.showMessageDialog(null, "Il voto � compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
+									JOptionPane.showMessageDialog(null, "Il voto è compreso tra " + punteggiomin.get(indice) + "e "+ punteggiomax.get(indice));
 								}else {
 									voto = Float.parseFloat(votos);
 									voti[indice] = voto;
