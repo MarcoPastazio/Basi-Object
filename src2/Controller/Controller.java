@@ -1,7 +1,7 @@
 package Controller;
 
 /**
- * il controller Ë quella classe che serve a collegare le GUI con le DAO e il Model. In questo caso,
+ * il controller √® quella classe che serve a collegare le GUI con le DAO e il Model. In questo caso,
  * per questo progetto ci metteremo solo una classe all'interno del package controller
  */
 
@@ -344,7 +344,7 @@ public class Controller {
 			JOptionPane.showMessageDialog(null,"Inserimento completato");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null,"Gi‡ Ë inserita");
+			JOptionPane.showMessageDialog(null,"Gi√† √® inserita");
 			e.printStackTrace();
 		}
 		
@@ -407,6 +407,13 @@ public class Controller {
 	public void setCorretto(String nometest, Studente st) {
 		float resM= qm.RisultatoMultiple(st.getLogin(),nometest);
 		sc.UpdateSoloMultiple(resM,st.getLogin(),nometest);
+	}
+	
+	
+	public void CheckEmptyTest(String nometest) {
+		boolean flag=t.CheckEmptyTest(nometest);
+		if(flag)
+			t.EliminaTest(nometest);
 	}
 	
 }
