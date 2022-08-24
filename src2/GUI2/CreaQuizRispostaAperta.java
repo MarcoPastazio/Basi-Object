@@ -34,6 +34,15 @@ public class CreaQuizRispostaAperta extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JFrame frame;
+	
+	/**
+	 * Crea il frame in cui viene creato il singolo quiz a risposta aperta per un determinato test
+	 * e si possono aggiungere o altri quiz a risposta aperta o multipla.
+	 * @param framechiamante il frame da cui veniamo
+	 * @param ins è l'insegnante che sta creando il quiz
+	 * @param nometest è il nome del test che il prof ha dato
+	 * @param r è l'oggetto che fa da intermediaro tra i vari package coinvolti
+	 */
 
 
 	public CreaQuizRispostaAperta(JFrame framechiamante, Insegnante ins, String nometest, Controller r) {
@@ -198,7 +207,6 @@ public class CreaQuizRispostaAperta extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				r.CheckEmptyTest(nometest);
-				//aggiungere un bottone salva e uno cancella tutto che in corso chiama elimina test e cancella 
 				framechiamante.setVisible(true);
 				frame.setVisible(false);
 				frame.dispose();
