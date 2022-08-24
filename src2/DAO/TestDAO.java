@@ -1,7 +1,7 @@
 package DAO;
 
 /**
- * All’interno del package ci sono le classi con tutte le implementazioni delle interfacce DAO rispetto a quel database
+ * Allâ€™interno del package ci sono le classi con tutte le implementazioni delle interfacce DAO rispetto a quel database
  */
 
 import java.sql.ResultSet;
@@ -17,4 +17,6 @@ public interface TestDAO {
 	public ResultSet PrendiTestAperte(Test t);
 	public ResultSet PrendiTestMultiple(Test t);
 	public void setInvalid(String test) throws SQLException;
+	public boolean CheckEmptyTest(String nometest);
+	public void EliminaTest(String nometest) ;
 }
