@@ -1,6 +1,6 @@
 # Progetto Object Oriented
 
-TRACCIA: progettazione e sviluppo di una base di dati relazionale per una applicazione di e-learning.
+TRACCIA: progettazione per una applicazione di e-learning.
 
 Componenti:\
 -Marco Pastore: |N86003875|\
