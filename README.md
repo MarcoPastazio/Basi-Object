@@ -7,4 +7,4 @@ Componenti:\
 -Carmine Mascia: |N86003800|
 
 Nel caso in cui nel pdf non si vedano bene le fotografie dei vari diagrammi, stanno caricati anche su github.\
-P.S. Login e Conferma2 sono i due sequence diagram
+P.S. Login e Conferma2 sono i due sequence diagram e si deve generare il javadoc
